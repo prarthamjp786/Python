@@ -31,10 +31,21 @@ export function expandPython(amount) {
     newSegments += amount;
 }
 
-export function onPython(position) {
-    return pythonBody.some(segment => {
+export function onPython(position, { ignoreHead = false } = {}) {
+    return pythonBody.some((segment, index) => {
+        if (ignoreHead && index === 0) {
+            return false;
+        }
         return equalPositions(segment, position);
     });
+}
+
+export function getPythonHead() {
+    return pythonBody[0];
+}
+
+export function pythonIntersection() {
+    return onPython(pythonBody[0], { ignoreHead: true })
 }
 
 function equalPositions(pos1, pos2) {
