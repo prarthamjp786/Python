@@ -1,6 +1,7 @@
 import { getInputDirection } from "./input.js";
 
 export const pythonSpeed = 2;
+let newSegments = 0;
 const pythonBody = [
     { x: 11, y: 11 }
 ];
@@ -23,4 +24,24 @@ export function draw(gameBoard) {
         pythonElement.classList.add('python');
         gameBoard.appendChild(pythonElement);
     })
+}
+
+export function expandPython(amount) {
+    newSegments += amount;
+}
+
+export function onPython(position) {
+    return pythonBody.some(segment => {
+        return equalPositions(segment, position);
+    });
+}
+
+function equalPositions(pos1, pos2) {
+    return (
+        pos1.x === pos2.x && pos1.y === pos2.y
+    );
+}
+
+function addSegments() {
+
 }

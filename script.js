@@ -1,4 +1,5 @@
 import { pythonSpeed, update as updatePython, draw as drawPython } from './python.js';
+import { update as updateFood, draw as drawFood } from './food.js';
 const gameBoard = document.getElementById('game-board');
 
 let lastRenderTime = 0;
@@ -20,9 +21,11 @@ window.requestAnimationFrame(main);
 
 function update() {
     updatePython();
+    updateFood();
 }
 
 function draw() {
     gameBoard.innerHTML = '';
     drawPython(gameBoard);
+    drawFood(gameBoard);
 }
