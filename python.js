@@ -1,12 +1,13 @@
 import { getInputDirection } from "./input.js";
 
-export const pythonSpeed = 2;
+export const pythonSpeed = 5;
 let newSegments = 0;
 const pythonBody = [
     { x: 11, y: 11 }
 ];
 
 export function update() {
+    addSegments();
     const inputDirection = getInputDirection();
     for (let i = pythonBody.length - 2; i >= 0; i--) {
         pythonBody[i + 1] = { ...pythonBody[i] };
@@ -43,5 +44,9 @@ function equalPositions(pos1, pos2) {
 }
 
 function addSegments() {
+    for (let i = 0; i < newSegments; i++) {
+        pythonBody.push({ ...pythonBody[pythonBody.length - 1] });
+    }
 
+    newSegments = 0;
 }
