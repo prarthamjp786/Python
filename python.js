@@ -1,6 +1,6 @@
 import { getInputDirection } from "./input.js";
 
-export const pythonSpeed = 5;
+export const pythonSpeed = 2;
 let newSegments = 0;
 const pythonBody = [
     { x: 11, y: 11 }
